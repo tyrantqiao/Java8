@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: http://127.0.0.1:3306/test/user?useSSL=false
+    username: root
+    password: TyrantQiao
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none

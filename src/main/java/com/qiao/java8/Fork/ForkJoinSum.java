@@ -50,7 +50,7 @@ public class ForkJoinSum extends RecursiveTask<Long> {
 		return sum;
 	}
 
-	private static Long getSum(Long n){
+	private static Long getSum(Long n) {
 		long[] nums = LongStream.rangeClosed(1, n).toArray();
 		ForkJoinSum task = new ForkJoinSum(nums);
 		return new ForkJoinPool().invoke(task);
@@ -58,7 +58,7 @@ public class ForkJoinSum extends RecursiveTask<Long> {
 
 	public static void main(String[] args) {
 		System.out.println(getSum(1000_000L));
-		System.out.println(MeasureTime.measureFastest(ForkJoinSum::getSum,  1000_000L));
+		System.out.println(MeasureTime.measureFastest(ForkJoinSum::getSum, 1000_000L));
 //		MeasureTime.measureFastest(pool,task)
 	}
 }

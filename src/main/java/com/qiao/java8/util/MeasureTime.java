@@ -20,7 +20,7 @@ public class MeasureTime {
 		}
 		return fastest;
 	}
-	}
+
 
 	public static Long measureFastest(LongFunction<Long> adder, Long n) {
 		Long fastest = Long.MAX_VALUE;

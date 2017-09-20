@@ -7,6 +7,7 @@ import java.util.Spliterator;
 import java.util.function.Consumer;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 /**
  * @author qiao
@@ -44,19 +45,19 @@ public class SpliteratorTest implements Spliterator<Character> {
 
 	@Override
 	public long estimateSize() {
-		return 0;
+		return s.length()-currentChar;
 	}
 
 	@Override
 	public int characteristics() {
-		return 0;
+		return ORDERED+SIZED+SUBSIZED+NONNULL+IMMUTABLE;
 	}
 
 	public static void main(String[] args){
 		String test = "hahaha dwidjw dwjixw wopoc  wdjjd wwdw  wkozx mxxcp";
-		Stream<Character> stream = IntStream.rangeClosed(0, test.length())
-				.mapToObj(test::charAt);
-		System.out.println(MeasureTime.measure(WordCounter::countWords,stream));
+		Spliterator<Character> spliterator=new SpliteratorTest(test);
+		Stream<Character> stream= StreamSupport.stream(spliterator,true);
+		System.out.println(WordCounter.countWords(stream));
 	}
 
 }

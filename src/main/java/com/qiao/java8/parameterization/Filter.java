@@ -2,15 +2,10 @@ package com.qiao.java8.parameterization;
 
 
 import com.qiao.java8.data.User;
-import com.qiao.java8.util.FileProcessor;
 
 import java.io.*;
 import java.util.*;
-import java.util.function.Function;
-import java.util.function.IntFunction;
-import java.util.function.IntPredicate;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.groupingBy;
 
@@ -55,7 +50,7 @@ public class Filter {
 		Map<String, List<User>> result=lists.stream()
 //								.filter(d->d.getAge()<25)
 								.sorted(Comparator.comparing(User::getAge))
-								.collect(groupingBy(User::getName));
+								.collect(groupingBy(User::getUsername));
 
 		Long stop = System.currentTimeMillis();
 		Long total = stop - start;
